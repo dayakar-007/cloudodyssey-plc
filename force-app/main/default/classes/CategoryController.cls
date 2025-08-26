@@ -12,6 +12,10 @@ public without sharing class CategoryController {
 
         System.debug('Fetched Categories Count: ' + categoriesList.size());
         System.debug('Fetched Categories: ' + categoriesList);
+        
+        if (categoriesList.isEmpty()) {
+            return null;
+        }
 
         System.debug('=== [CategoryController.getActiveCategories] END ===');
         return categoriesList;
