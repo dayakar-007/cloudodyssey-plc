@@ -1,0 +1,21 @@
+<template>
+    <nav class="nav-container">
+        <ul class="nav-list">
+            <li>
+                <a href="/" title="Home">Home</a>
+            </li>
+        </ul>
+        <template if:true={categoryList}>
+        <ul>
+            <template for:each={categoryList} for:item="cat">
+                <li key={cat.Id}>
+                    <a href="javascript:void(0)" 
+                        title={cat.Name}
+                        data-name={cat.Name}
+                        onclick={handleCategoryClick}>{cat.Name}</a>
+                </li>
+            </template>
+        </ul>
+    </template>
+    </nav>
+</template>
