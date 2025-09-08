@@ -1,0 +1,23 @@
+.header-container
+{
+    display: flex;
+    flex-direction: column;
+}
+.promo-bar{
+
+    border: 1px solid rgb(225, 180, 82);
+    background-color:#faf0dc;
+    min-height: 2.5rem;
+
+}
+.main-bar{
+    height: 6.5rem;
+}
+.promo-text-select-country
+{
+    padding-left: 32px;
+    padding-right: 32px;
+    display: flex;
+    justify-content: center;
+
+}
