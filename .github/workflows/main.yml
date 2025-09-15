@@ -1,0 +1,64 @@
+name: Retrieve from UAT
+
+on:
+  workflow_dispatch:   # manually trigger when you want to pull from UAT
+
+jobs:
+  retrieve:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install Salesforce CLI
+        run: npm install sfdx-cli --global
+
+      - name: Authenticate UAT Org
+        run: |
+          echo ${{ secrets.SF_AUTH_URL_UAT }} > auth_uat.txt
+          sfdx auth:sfdxurl:store -f auth_uat.txt -a UAT
+
+      - name: Retrieve metadata from UAT
+        run: |
+          sfdx force:source:retrieve -u UAT -m ApexClass,ApexTrigger,LightningComponentBundle
+          # or retrieve all metadata: sfdx force:source:retrieve -u UAT
+
+      - name: Commit & Push to GitHub
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add .
+          git commit -m "Retrieved metadata from UAT"
+          git push origin main
+name: Retrieve from UAT
+
+on:
+  workflow_dispatch:   # manually trigger when you want to pull from UAT
+
+jobs:
+  retrieve:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install Salesforce CLI
+        run: npm install sfdx-cli --global
+
+      - name: Authenticate UAT Org
+        run: |
+          echo ${{ secrets.SF_AUTH_URL_UAT }} > auth_uat.txt
+          sfdx auth:sfdxurl:store -f auth_uat.txt -a UAT
+
+      - name: Retrieve metadata from UAT
+        run: |
+          sfdx force:source:retrieve -u UAT -m ApexClass,ApexTrigger,LightningComponentBundle
+          # or retrieve all metadata: sfdx force:source:retrieve -u UAT
+
+      - name: Commit & Push to GitHub
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add .
+          git commit -m "Retrieved metadata from UAT"
+          git push origin main
