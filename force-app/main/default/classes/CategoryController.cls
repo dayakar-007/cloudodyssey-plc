@@ -44,4 +44,5 @@ public without sharing class CategoryController {
         System.debug('=== [CategoryController.getCategoryIdByName] END ===');
         return categoryId;
     }
+    //connected app changes
 }

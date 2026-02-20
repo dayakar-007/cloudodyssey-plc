@@ -17,7 +17,7 @@
   grid-template-rows: repeat(4,1fr);
   grid-template-columns: repeat(3,1fr);
 }
-.header,.footer
+.footer
 {
   grid-column-start:1;
   grid-column-end:4;

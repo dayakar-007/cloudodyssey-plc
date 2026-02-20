@@ -1,0 +1,27 @@
+<template>
+    <div class = "employee-list">
+        <template for:each={employeeList} for:item="emp">
+            <div class = "employee-card" key={emp.Id}>
+                <div class="employee-photo">
+
+                </div>
+                <div class ="employee-info">
+                    <div>
+                        <p class="employee-name">{emp.Name}
+                    </p>
+                    <div class="dots-box">
+        <span class="dots">...</span>
+
+                    </div>
+                    </div>
+                    
+                    <p class="employee-position employee">{emp.position}</p>
+                    <p class="employee-location employee"><span>Location: </span>{emp.Location}</p>
+                    <p class="employee-email employee"><span>Email: </span>{emp.Email}</p>
+                    <p class="employee-mobile employee"><span>Mobile: </span>{emp.Mobile}</p>
+                    <p class="employee-status">{emp.Status}</p>
+                </div>
+            </div>
+        </template>
+    </div>
+</template>

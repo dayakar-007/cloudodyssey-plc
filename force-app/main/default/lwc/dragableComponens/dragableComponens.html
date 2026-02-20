@@ -1,0 +1,16 @@
+<template>
+    <div class="container">
+        <template for:each={sections} for:item="sec">
+            <div key={sec.id}
+                 class="section"
+                 draggable="true"
+                 data-id={sec.id}
+                 ondragstart={handleDragStart}
+                 ondragover={handleDragOver}
+                 ondrop={handleDrop}>
+                 
+                <p>{sec.label}</p>
+            </div>
+        </template>
+    </div>
+</template>

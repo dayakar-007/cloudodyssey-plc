@@ -1,0 +1,15 @@
+.container {
+    width: 300px;
+}
+
+.section {
+    padding: 12px;
+    margin: 10px 0;
+    background: #f4f6f9;
+    border: 1px solid #dcdcdc;
+    border-radius: 6px;
+    cursor: grab;
+}
+.section:active {
+    cursor: grabbing;
+}
