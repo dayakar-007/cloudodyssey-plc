@@ -1,0 +1,16 @@
+.quantity-selection{
+    display: flex;
+    align-items:center;
+    justify-content: space-between;
+    width: 300px;
+    border: 1px solid black;
+    padding: 5px 10px;
+
+}
+.cart-selection{
+    display: flex;
+    border: 1px solid black;
+    gap:1rem;
+    width:222px;
+    
+}

@@ -1,0 +1,44 @@
+*{
+	margin:0;
+	padding:0;
+}
+.Status-Board{
+	column-gap: 1rem;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+.status-column{
+	border: 1px solid black;
+	width: 20%;
+}
+.column-items{
+	width:100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	height: 140px;
+	overflow-y: auto;
+}
+.status-item{
+	border: 1px solid gray;
+	margin: 0.5rem;
+	padding: 0.5rem;
+	border-radius:12px;
+	width: 50%;
+}
+.status-item[data-status="Draft"] {
+    background-color: hsl(210, 100%, 85%) !important;
+}
+
+.status-item[data-status="Created"] {
+    background-color: #e9e645 !important;
+}
+
+.status-item[data-status="Succeeded"] {
+    background-color: #1c9c1c !important;
+}
+
+.status-item[data-status="Failed"] {
+    background-color: #ed1414ff !important;
+}

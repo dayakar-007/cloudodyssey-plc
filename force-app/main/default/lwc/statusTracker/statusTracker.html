@@ -1,0 +1,12 @@
+<template>
+    <lightning-card title="Status Tracer">
+        <div class="status-tracker">
+            <template for:each={steps} for:item="step">
+                <div class="step" key={step}>
+                    <!-- <div class="cricle"></div> -->
+                    <div class="line"></div>
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+</template>
