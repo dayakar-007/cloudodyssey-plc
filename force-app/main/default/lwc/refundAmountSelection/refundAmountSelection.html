@@ -1,0 +1,95 @@
+<template>
+    <lightning-card title="Refund Amount Selection">
+    <template if:true={isLoading}>
+        <lightning-spinner variant="brand" size="large"> </lightning-spinner>
+    </template>
+    
+    <template if:false={refundSuccess}>
+    
+        <div class="slds-p-around_medium">
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">Product</th>
+                        <th scope="col">QuantityReceived</th>
+                        <th scope="col">Total Amount</th>
+                        <th scope="col">Available to Refund</th>
+                        <th scope="col">Enter Refund Amount</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <template for:each={discounts} for:item="item">
+                        <tr key={item.id}>
+                            <td>
+                                <div class="slds-text-heading_small">{item.name}</div>
+                            </td>
+                            <td>
+                                <div class="slds-text-heading_small">₹{item.QuantityReceived}</div>
+                            </td>
+                            <td>
+                                <div class="slds-text-heading_small">₹{item.totalwithtax}</div>
+                            </td>
+                            <td>
+                                <div class="slds-text-heading_small">₹{item.availableToRefund}</div>
+                            </td>
+                            <td>
+                                <lightning-input
+                                    type="number"
+                                    value={item.discountValue}
+                                    min="0"
+                                    max={item.maxRefund}
+                                    data-id={item.id}
+                                    onchange={handleValueChange}
+                                    message-when-bad-input="Please enter a valid amount"
+                                    message-when-range-overflow={item.rangeOverflowMessage}
+                                    message-when-range-underflow="Amount should be greater than 0">
+                                </lightning-input>
+                            </td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+
+            <!-- Total Section -->
+            <div class="slds-m-top_medium slds-text-align_right slds-text-heading_small">
+                <strong>Total Entered Refund: ₹{totalAmount}</strong>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="slds-m-top_medium slds-text-align_right">
+                <lightning-button
+                    label="Submit Refund"
+                    variant="brand"
+                    disabled={isButtonDisabled}
+                    onclick={handleSubmit}>
+                </lightning-button>
+            </div>
+        </div>
+   
+    </template>
+    <template if:true={refundSuccess}>
+    <div class="slds-text-align_center slds-m-vertical_xx-large">
+        <lightning-icon
+            icon-name="utility:success"
+            size="large"
+            class="slds-m-bottom_small">
+        </lightning-icon>
+
+        <h2 class="slds-text-heading_medium slds-text-color_success">
+            Payment Successful 🎉
+        </h2>
+
+        <p class="slds-text-body_regular slds-m-top_small">
+            Refund Number:
+            <lightning-button
+                variant="base"
+                label={refundNumber}
+                onclick={handleNavigateToRefund}
+                class="slds-p-left_xx-small">
+            </lightning-button>
+        </p>
+    </div>
+</template>
+ </lightning-card>
+</template>

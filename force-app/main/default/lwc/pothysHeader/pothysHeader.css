@@ -18,6 +18,5 @@
     padding-left: 32px;
     padding-right: 32px;
     display: flex;
-    justify-content: center;
-
+    justify-content: space-between;
 }

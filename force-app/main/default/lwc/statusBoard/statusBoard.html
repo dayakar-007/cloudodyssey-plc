@@ -1,0 +1,36 @@
+<template>
+    <lightning-card title="Status Board" icon-name="standard:status_board">
+        <template if:true={isLoading}>
+            <lightning-spinner
+                alternative-text="Loading..."
+                size="medium"
+                variant="brand">
+            </lightning-spinner>
+        </template>
+        <div class="Status-Board ">
+            <template for:each={columns} for:item="column">
+                <div class="status-column" 
+                    key = {column.key}
+                    data-status={column.status}
+                    ondragover={handleDragOver}
+                    ondrop={handleDrop}
+                    >
+                    <p>{column.label}</p>
+                    <div class="column-items">
+                        <template for:each={column.items} for:item="record">
+                            <div key={record.Id} 
+                                class = "status-item"
+                                draggable="true"
+                                data-id = {record.Id}
+                                data-status={record.Status__c}
+                                ondragstart={handleDragStart}
+                            >
+                                {record.Name}
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+</template>

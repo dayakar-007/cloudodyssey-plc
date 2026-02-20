@@ -1,0 +1,65 @@
+.employee-list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:center;
+    gap: 2rem;
+    background-color:white;
+    width: 100%;
+
+    padding: 18px;
+}
+.employee-card{
+    display: flex;
+    gap:2rem;
+    width: 437.9px;
+    height: 195.14px;
+    border: none;
+    position: relative;
+    padding: 16px;
+    transition: all 0.5s;
+
+}
+.employee{
+    color: #0F1824;
+    font: 12px "proxima nova" sans-serif;
+
+}
+.employee-location{
+    padding-top: 22px;
+}
+.employee-name{
+    font-size: 20px;
+    font-weight: bold;
+    font-family: math;
+    position: relative;
+}
+.employee-photo{
+    width:100px;
+    height: 100px;
+    border:1px solid black;
+    border-radius: 51px;
+}
+.employee-status{
+    position: absolute;
+    top:16px;
+    right: 16px;
+    border: none;
+    background-color: rgb(63, 161, 74);
+    color: white;
+    padding: 1px 3px;
+    border-radius: 6px;
+}
+.employee-card:hover{
+    transform: scale(1.05);
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+}
+.dots{
+    position: absolute;
+    display: inline;
+    border: 1px solid black;
+    right: 52px;
+    text-align: center;
+}
+.dots:hover{
+    cursor: pointer;
+}
