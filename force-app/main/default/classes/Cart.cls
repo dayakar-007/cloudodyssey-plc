@@ -1,3 +1,4 @@
+// BUG-0002-Dayakar connect
 public without sharing class Cart {
     @AuraEnabled(cacheable=true)
     public static Map<String,String> getOrgInfo(String storeName,String currentUserId)
@@ -39,6 +40,12 @@ public without sharing class Cart {
         System.debug('Input => webStore: ' + webStore);
         System.debug('Input => userId: ' + userId);
         System.debug('Input => accountId: ' + accountId);
+
+        // BUG-001: avoid invalid ConnectApi calls when required cart inputs are missing.
+        if (String.isBlank(productID) || quantity == null || quantity <= 0 || webStore == null || userId == null || String.isBlank(accountId)) {
+            System.debug('[addProductToCart] Invalid input. Skipping cart operation.');
+            return 'invalid cart input';
+        }
         
         Id cartId;
         List<WebCart> cart = [
@@ -114,6 +121,11 @@ public without sharing class Cart {
         System.debug('Input => ProductId: ' + productId);
         System.debug('Input => WebStoreId: ' + webStoreId);
         System.debug('Input => Quantity: ' + quantity);
+
+        if (productId == null || webCartId == null || quantity == null || quantity <= 0 || accountId == null || webStoreId == null) {
+            System.debug('[itemToCart] Invalid input. Skipping addItemToCart call.');
+            return;
+        }
         
         ConnectApi.CartItemInput input = new ConnectApi.CartItemInput();
         input.productId = productId;
@@ -131,4 +143,5 @@ public without sharing class Cart {
         System.debug('--- [itemToCart] Method End ---');
     }
     
+}
 }
